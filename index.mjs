@@ -5,7 +5,6 @@ import {
 } from '@taufik-nurrohman/is';
 
 export const toBoolean = x => !!x;
-export const toFloat = x => ~x;
 export const toHTML = x => {
     return x
         .replace(/&lt;/g, '<')
@@ -19,7 +18,7 @@ export const toReal = x => {
         return x.map(v => toReal(v));
     }
     if (isNumeric(x)) {
-        return -1 !== x.indexOf('.') ? toFloat(x) : toNumber(x);
+        return toNumber(x);
     }
     if (isObject(x, true)) {
         for (let k in x) {

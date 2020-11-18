@@ -43,8 +43,6 @@ Methods
 
 ### toBoolean(x)
 
-### toFloat(x)
-
 ### toHTML(x)
 
 ### toJSON(x)
