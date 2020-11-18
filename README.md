@@ -41,6 +41,18 @@ console.log(toNumber('1'));
 Methods
 -------
 
+### toBoolean(x)
+
+### toFloat(x)
+
+### toHTML(x)
+
+### toJSON(x)
+
 ### toNumber(x)
 
+### toReal(x)
+
 ### toString(x)
+
+### toURL(x)
