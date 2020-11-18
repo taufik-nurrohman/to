@@ -1,7 +1,7 @@
 Converter Utility
 =================
 
-Convert from X to Y.
+Convert to X from Y.
 
 ### Browser
 
