@@ -45,13 +45,23 @@ Methods
 
 ### toBoolean(any)
 
+### toCeil(number)
+
+### toFixed(number)
+
+### toFloor(number)
+
 ### toHTML(string)
 
 ### toJSON(any)
 
 ### toNumber(string, base = 10)
 
+### toRound(number)
+
 ### toString(any)
+
+### toString(number, base = 10)
 
 ### toURL(string)
 

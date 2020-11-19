@@ -3,11 +3,15 @@
 ($$ => {
     const {
         isArray,
+        isNumber,
         isNumeric,
         isObject
     } = require('@taufik-nurrohman/is');
     const toArray = x => isArray(x) ? x : [x];
     const toBoolean = x => !!x;
+    const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
+    const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
+    const toFloor = x => isNumber(x) ? Math.floor(x) : x;
     const toHTML = x => {
         return x
             .replace(/&lt;/g, '<')
@@ -16,27 +20,8 @@
     };
     const toJSON = x => JSON.stringify(x);
     const toNumber = (x, base = 10) => parseInt(x, base);
-    const toString = x => {
-        if (isArray(x)) {
-            return x.map(v => toString(x));
-        }
-        if (isObject(x, true)) {
-            for (let k in x) {
-                x[k] = toString(x[k]);
-            }
-            return x;
-        }
-        if (false === x) {
-            return 'false';
-        }
-        if (null === x) {
-            return 'null';
-        }
-        if (true === x) {
-            return 'true';
-        }
-        return x + "";
-    };
+export const toRound = x => isNumber(x) ? Math.round(x) : null;
+    const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
     const toURL = x => decodeURIComponent(x);
     const toValue = x => {
         if (isArray(x)) {
@@ -58,9 +43,13 @@
         })[x] || x;
     };
     $$.toBoolean = toBoolean;
+    $$.toCeil = toCeil;
+    $$.toFixed = toFixed;
+    $$.toFloor = toFloor;
     $$.toHTML = toHTML;
     $$.toJSON = toJSON;
     $$.toNumber = toNumber;
+    $$.toRound = toRound;
     $$.toString = toString;
     $$.toURL = toURL;
     $$.toValue = toValue;

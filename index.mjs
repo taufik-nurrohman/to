@@ -1,11 +1,15 @@
 import {
     isArray,
+    isNumber,
     isNumeric,
     isObject
 } from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
 export const toBoolean = x => !!x;
+export const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
+export const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
+export const toFloor = x => isNumber(x) ? Math.floor(x) : x;
 export const toHTML = x => {
     return x
         .replace(/&lt;/g, '<')
@@ -14,27 +18,8 @@ export const toHTML = x => {
 };
 export const toJSON = x => JSON.stringify(x);
 export const toNumber = (x, base = 10) => parseInt(x, base);
-export const toString = x => {
-    if (isArray(x)) {
-        return x.map(v => toString(x));
-    }
-    if (isObject(x, true)) {
-        for (let k in x) {
-            x[k] = toString(x[k]);
-        }
-        return x;
-    }
-    if (false === x) {
-        return 'false';
-    }
-    if (null === x) {
-        return 'null';
-    }
-    if (true === x) {
-        return 'true';
-    }
-    return x + "";
-};
+export const toRound = x => isNumber(x) ? Math.round(x) : null;
+export const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
 export const toURL = x => decodeURIComponent(x);
 export const toValue = x => {
     if (isArray(x)) {
