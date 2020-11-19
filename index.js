@@ -13,7 +13,7 @@
             .replace(/&gt;/g, '>')
             .replace(/&amp;/g, '&');
     };
-    const toJSON = x => JSON.parse(x);
+    const toJSON = x => JSON.stringify(x);
     const toNumber = x => +x;
     const toReal = x => {
         if (isArray(x)) {

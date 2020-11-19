@@ -11,7 +11,7 @@ export const toHTML = x => {
         .replace(/&gt;/g, '>')
         .replace(/&amp;/g, '&');
 };
-export const toJSON = x => JSON.parse(x);
+export const toJSON = x => JSON.stringify(x);
 export const toNumber = x => +x;
 export const toReal = x => {
     if (isArray(x)) {

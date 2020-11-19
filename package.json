@@ -1,7 +1,7 @@
 {
   "name": "@taufik-nurrohman/to",
   "description": "Convert to X from Y.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "exports": {
     "import": "./index.mjs",
