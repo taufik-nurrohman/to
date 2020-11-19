@@ -14,26 +14,7 @@
             .replace(/&amp;/g, '&');
     };
     const toJSON = x => JSON.stringify(x);
-    const toNumber = x => +x;
-    const toReal = x => {
-        if (isArray(x)) {
-            return x.map(v => toReal(v));
-        }
-        if (isNumeric(x)) {
-            return toNumber(x);
-        }
-        if (isObject(x, true)) {
-            for (let k in x) {
-                x[k] = toReal(x[k]);
-            }
-            return x;
-        }
-        return ({
-            'false': false,
-            'null': null,
-            'true': true
-        })[x] || x;
-    };
+    const toNumber = (x, base = 10) => parseInt(x, base);
     const toString = x => {
         if (isArray(x)) {
             return x.map(v => toString(x));
@@ -56,11 +37,30 @@
         return x + "";
     };
     const toURL = x => decodeURIComponent(x);
+    const toValue = x => {
+        if (isArray(x)) {
+            return x.map(v => toValue(v));
+        }
+        if (isNumeric(x)) {
+            return toNumber(x);
+        }
+        if (isObject(x, true)) {
+            for (let k in x) {
+                x[k] = toValue(x[k]);
+            }
+            return x;
+        }
+        return ({
+            'false': false,
+            'null': null,
+            'true': true
+        })[x] || x;
+    };
     $$.toBoolean = toBoolean;
     $$.toHTML = toHTML;
     $$.toJSON = toJSON;
     $$.toNumber = toNumber;
-    $$.toReal = toReal;
     $$.toString = toString;
     $$.toURL = toURL;
+    $$.toValue = toValue;
 })(exports || window || {});

@@ -12,26 +12,7 @@ export const toHTML = x => {
         .replace(/&amp;/g, '&');
 };
 export const toJSON = x => JSON.stringify(x);
-export const toNumber = x => +x;
-export const toReal = x => {
-    if (isArray(x)) {
-        return x.map(v => toReal(v));
-    }
-    if (isNumeric(x)) {
-        return toNumber(x);
-    }
-    if (isObject(x, true)) {
-        for (let k in x) {
-            x[k] = toReal(x[k]);
-        }
-        return x;
-    }
-    return ({
-        'false': false,
-        'null': null,
-        'true': true
-    })[x] || x;
-};
+export const toNumber = (x, base = 10) => parseInt(x, base);
 export const toString = x => {
     if (isArray(x)) {
         return x.map(v => toString(x));
@@ -54,3 +35,22 @@ export const toString = x => {
     return x + "";
 };
 export const toURL = x => decodeURIComponent(x);
+export const toValue = x => {
+    if (isArray(x)) {
+        return x.map(v => toValue(v));
+    }
+    if (isNumeric(x)) {
+        return toNumber(x);
+    }
+    if (isObject(x, true)) {
+        for (let k in x) {
+            x[k] = toValue(x[k]);
+        }
+        return x;
+    }
+    return ({
+        'false': false,
+        'null': null,
+        'true': true
+    })[x] || x;
+};

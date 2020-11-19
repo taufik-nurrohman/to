@@ -41,16 +41,16 @@ console.log(toNumber('1'));
 Methods
 -------
 
-### toBoolean(x)
+### toBoolean(any)
 
-### toHTML(x)
+### toHTML(string)
 
-### toJSON(x)
+### toJSON(any)
 
-### toNumber(x)
+### toNumber(string, base = 10)
 
-### toReal(x)
+### toString(any)
 
-### toString(x)
+### toURL(string)
 
-### toURL(x)
+### toValue(any)
