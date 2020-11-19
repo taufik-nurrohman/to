@@ -6,6 +6,7 @@
         isNumeric,
         isObject
     } = require('@taufik-nurrohman/is');
+    const toArray = x => isArray(x) ? x : [x];
     const toBoolean = x => !!x;
     const toHTML = x => {
         return x

@@ -41,6 +41,8 @@ console.log(toNumber('1'));
 Methods
 -------
 
+### toArray(any)
+
 ### toBoolean(any)
 
 ### toHTML(string)

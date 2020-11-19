@@ -4,6 +4,7 @@ import {
     isObject
 } from '@taufik-nurrohman/is';
 
+export const toArray = x => isArray(x) ? x : [x];
 export const toBoolean = x => !!x;
 export const toHTML = x => {
     return x
