@@ -28,7 +28,7 @@ export const toValue = x => {
     if (isNumeric(x)) {
         return toNumber(x);
     }
-    if (isObject(x, true)) {
+    if (isObject(x)) {
         for (let k in x) {
             x[k] = toValue(x[k]);
         }

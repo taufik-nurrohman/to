@@ -1,7 +1,7 @@
 {
   "name": "@taufik-nurrohman/to",
   "description": "Convert to X from Y.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "exports": {
     "import": "./index.mjs",
@@ -15,7 +15,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "@taufik-nurrohman/is": ">=0.0.1"
+    "@taufik-nurrohman/is": ">=0.0.3"
   },
   "devDependencies": {
     "ava": "^3.13.0"
