@@ -20,7 +20,7 @@
     };
     const toJSON = x => JSON.stringify(x);
     const toNumber = (x, base = 10) => parseInt(x, base);
-export const toRound = x => isNumber(x) ? Math.round(x) : null;
+    const toRound = x => isNumber(x) ? Math.round(x) : null;
     const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
     const toURL = x => decodeURIComponent(x);
     const toValue = x => {
