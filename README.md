@@ -12,17 +12,7 @@ console.log(toNumber('1'));
 </script>
 ~~~
 
-### Browser Module
-
-~~~ html
-<script type="module">
-import {toNumber} from './@taufik-nurrohman/to/index.mjs';
-
-console.log(toNumber('1'));
-</script>
-~~~
-
-### CommonJS Module
+### CommonJS
 
 ~~~ js
 const {toNumber} = require('@taufik-nurrohman/to');
@@ -30,7 +20,7 @@ const {toNumber} = require('@taufik-nurrohman/to');
 console.log(toNumber('1'));
 ~~~
 
-### ECMAScript Module
+### ECMAScript
 
 ~~~ js
 import {toNumber} from '@taufik-nurrohman/to';
