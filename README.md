@@ -26,6 +26,16 @@ Methods
 
 ### toBoolean(any)
 
+### toCaseCamel(string)
+
+### toCaseKebab(string, separator = '-')
+
+### toCaseLower(string)
+
+### toCasePascal(string)
+
+### toCaseUpper(string)
+
 ### toCeil(number)
 
 ### toFixed(number)

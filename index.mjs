@@ -2,6 +2,11 @@ import {isArray, isNumber, isNumeric, isObject} from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
 export const toBoolean = x => !!x;
+export const toCaseCamel = x => x.replace(/[-_.](\w)/g, (m0, m1) => toCaseUpper(m1));
+export const toCaseKebab = (x, separator = '-') => x.replace(/[A-Z]/g, m0 => separator + toCaseLower(m0)).replace(/\W+/g, separator);
+export const toCaseLower = x => x.toLowerCase();
+export const toCasePascal = x => x.replace(/(?:^|[-_.])(\w)/g, (m0, m1) => toCaseUpper(m1));
+export const toCaseUpper = x => x.toUpperCase();
 export const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
 export const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 export const toFloor = x => isNumber(x) ? Math.floor(x) : x;

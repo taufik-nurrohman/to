@@ -2,6 +2,11 @@ const {isArray, isNumber, isNumeric, isObject} = require('@taufik-nurrohman/is')
 
 const toArray = x => isArray(x) ? x : [x];
 const toBoolean = x => !!x;
+const toCaseCamel = x => x.replace(/[-_.](\w)/g, (m0, m1) => toCaseUpper(m1));
+const toCaseKebab = (x, separator = '-') => x.replace(/[A-Z]/g, m0 => separator + toCaseLower(m0)).replace(/\W+/g, separator);
+const toCaseLower = x => x.toLowerCase();
+const toCasePascal = x => x.replace(/(?:^|[-_.])(\w)/g, (m0, m1) => toCaseUpper(m1));
+const toCaseUpper = x => x.toUpperCase();
 const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
 const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 const toFloor = x => isNumber(x) ? Math.floor(x) : x;
@@ -39,6 +44,11 @@ const toValue = x => {
 Object.assign(exports || {}, {
     toArray,
     toBoolean,
+    toCaseCamel,
+    toCaseKebab,
+    toCaseLower,
+    toCasePascal,
+    toCaseUpper,
     toCeil,
     toFixed,
     toFloor,
