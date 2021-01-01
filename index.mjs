@@ -1,4 +1,4 @@
-import {isArray, isNumber, isNumeric, isObject, isSet} from '@taufik-nurrohman/is';
+import {isArray, isNumber, isNumeric, isObject, isSet, isString} from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
 export const toBoolean = x => !!x;
@@ -27,8 +27,9 @@ export const toHTML = x => {
         .replace(/&amp;/g, '&');
 };
 export const toJSON = x => JSON.stringify(x);
-export const toNumber = (x, base = 10) => parseInt(x, base);
+export const toNumber = (x, base = 10) => base ? parseInt(x, base) : +x;
 export const toObjectCount = x => toCount(toObjectKeys(x));
+export const toObject = x => Object.create(x);
 export const toObjectEntries = x => Object.entries(x);
 export const toObjectKeys = x => Object.keys(x);
 export const toObjectValues = x => Object.values(x);

@@ -27,7 +27,7 @@ const toHTML = x => {
         .replace(/&amp;/g, '&');
 };
 const toJSON = x => JSON.stringify(x);
-const toNumber = (x, base = 10) => parseInt(x, base);
+const toNumber = (x, base = 10) => base ? parseInt(x, base) : +x;
 const toObjectCount = x => toCount(toObjectKeys(x));
 const toObjectEntries = x => Object.entries(x);
 const toObjectKeys = x => Object.keys(x);
