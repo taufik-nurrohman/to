@@ -38,6 +38,8 @@ Methods
 
 ### toCeil(number)
 
+### toEdge(number, [min, max])
+
 ### toFixed(number)
 
 ### toFloor(number)

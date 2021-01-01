@@ -8,6 +8,15 @@ const toCaseLower = x => x.toLowerCase();
 const toCasePascal = x => x.replace(/(?:^|[-_.])(\w)/g, (m0, m1) => toCaseUpper(m1));
 const toCaseUpper = x => x.toUpperCase();
 const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
+const toEdge = (x, edges) => {
+    if (isSet(edges[0]) && x < edges[0]) {
+        return edges[0];
+    }
+    if (isSet(edges[1]) && x > edges[1]) {
+        return edges[1];
+    }
+    return x;
+};
 const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 const toFloor = x => isNumber(x) ? Math.floor(x) : x;
 const toHTML = x => {
