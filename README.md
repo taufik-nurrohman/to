@@ -38,6 +38,8 @@ Methods
 
 ### toCeil(number)
 
+### toCount(array|string)
+
 ### toEdge(number, [min, max])
 
 ### toFixed(number)
@@ -49,6 +51,14 @@ Methods
 ### toJSON(any)
 
 ### toNumber(string, base = 10)
+
+### toObjectCount(object)
+
+### toObjectEntries(object)
+
+### toObjectKeys(object)
+
+### toObjectValues(object)
 
 ### toRound(number)
 

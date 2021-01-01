@@ -8,6 +8,7 @@ export const toCaseLower = x => x.toLowerCase();
 export const toCasePascal = x => x.replace(/(?:^|[-_.])(\w)/g, (m0, m1) => toCaseUpper(m1));
 export const toCaseUpper = x => x.toUpperCase();
 export const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
+export const toCount = x => x.length;
 export const toEdge = (x, edges) => {
     if (isSet(edges[0]) && x < edges[0]) {
         return edges[0];
@@ -27,6 +28,10 @@ export const toHTML = x => {
 };
 export const toJSON = x => JSON.stringify(x);
 export const toNumber = (x, base = 10) => parseInt(x, base);
+export const toObjectCount = x => toCount(toObjectKeys(x));
+export const toObjectEntries = x => Object.entries(x);
+export const toObjectKeys = x => Object.keys(x);
+export const toObjectValues = x => Object.values(x);
 export const toRound = x => isNumber(x) ? Math.round(x) : null;
 export const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
 export const toURL = x => decodeURIComponent(x);

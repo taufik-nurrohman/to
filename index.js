@@ -8,6 +8,7 @@ const toCaseLower = x => x.toLowerCase();
 const toCasePascal = x => x.replace(/(?:^|[-_.])(\w)/g, (m0, m1) => toCaseUpper(m1));
 const toCaseUpper = x => x.toUpperCase();
 const toCeil = x => isNumber(x) ? Math.ceil(x) : null;
+const toCount = x => x.length;
 const toEdge = (x, edges) => {
     if (isSet(edges[0]) && x < edges[0]) {
         return edges[0];
@@ -27,6 +28,10 @@ const toHTML = x => {
 };
 const toJSON = x => JSON.stringify(x);
 const toNumber = (x, base = 10) => parseInt(x, base);
+const toObjectCount = x => toCount(toObjectKeys(x));
+const toObjectEntries = x => Object.entries(x);
+const toObjectKeys = x => Object.keys(x);
+const toObjectValues = x => Object.values(x);
 const toRound = x => isNumber(x) ? Math.round(x) : null;
 const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
 const toURL = x => decodeURIComponent(x);
@@ -59,13 +64,18 @@ Object.assign(exports || {}, {
     toCasePascal,
     toCaseUpper,
     toCeil,
+    toCount,
+    toEdge,
     toFixed,
     toFloor,
     toHTML,
     toJSON,
     toNumber,
+    toObjectCount,
+    toObjectEntries,
+    toObjectKeys,
+    toObjectValues,
     toRound,
-    toString,
     toString,
     toURL,
     toValue
