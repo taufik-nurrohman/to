@@ -27,7 +27,7 @@ export const toHTML = x => {
         .replace(/&amp;/g, '&');
 };
 export const toJSON = x => JSON.stringify(x);
-export const toNumber = (x, base = 10) => base ? parseInt(x, base) : +x;
+export const toNumber = (x, base = 10) => base ? parseInt(x, base) : parseFloat(x);
 export const toObjectCount = x => toCount(toObjectKeys(x));
 export const toObject = x => Object.create(x);
 export const toObjectEntries = x => Object.entries(x);
