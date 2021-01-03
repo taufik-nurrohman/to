@@ -24,6 +24,10 @@ Methods
 
 ### toArray(any)
 
+### toArrayKey(value, array)
+
+### toArrayValue(key, array)
+
 ### toBoolean(any)
 
 ### toCaseCamel(string)
@@ -56,7 +60,11 @@ Methods
 
 ### toObjectEntries(object)
 
+### toObjectKey(value, object)
+
 ### toObjectKeys(object)
+
+### toObjectValue(key, object)
 
 ### toObjectValues(object)
 

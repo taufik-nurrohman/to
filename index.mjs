@@ -1,6 +1,14 @@
 import {isArray, isNumber, isNumeric, isObject, isSet, isString} from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
+export const toArrayKey = (x, data) => {
+    let i = data.indexOf(x);
+    return -1 !== i ? i : null;
+};
+export const toArrayValue = (x, data) => {
+    let i = data.indexOf(x);
+    return -1 !== i ? data[i] : null;
+};
 export const toBoolean = x => !!x;
 export const toCaseCamel = x => x.replace(/[-_.](\w)/g, (m0, m1) => toCaseUpper(m1));
 export const toCaseKebab = (x, separator = '-') => x.replace(/[A-Z]/g, m0 => separator + toCaseLower(m0)).replace(/\W+/g, separator);
@@ -31,7 +39,16 @@ export const toNumber = (x, base = 10) => base ? parseInt(x, base) : parseFloat(
 export const toObjectCount = x => toCount(toObjectKeys(x));
 export const toObject = x => Object.create(x);
 export const toObjectEntries = x => Object.entries(x);
+export const toObjectKey = (x, data) => {
+    for (let key in data) {
+        if (x === data[key]) {
+            return key;
+        }
+    }
+    return null;
+};
 export const toObjectKeys = x => Object.keys(x);
+export const toObjectValue = (x, data) => x in data ? data[x] : null;
 export const toObjectValues = x => Object.values(x);
 export const toRound = x => isNumber(x) ? Math.round(x) : null;
 export const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;

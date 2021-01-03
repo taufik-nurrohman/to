@@ -1,6 +1,14 @@
 const {isArray, isNumber, isNumeric, isObject, isSet} = require('@taufik-nurrohman/is');
 
 const toArray = x => isArray(x) ? x : [x];
+const toArrayKey = (x, data) => {
+    let i = data.indexOf(x);
+    return -1 !== i ? i : null;
+};
+const toArrayValue = (x, data) => {
+    let i = data.indexOf(x);
+    return -1 !== i ? data[i] : null;
+};
 const toBoolean = x => !!x;
 const toCaseCamel = x => x.replace(/[-_.](\w)/g, (m0, m1) => toCaseUpper(m1));
 const toCaseKebab = (x, separator = '-') => x.replace(/[A-Z]/g, m0 => separator + toCaseLower(m0)).replace(/\W+/g, separator);
@@ -30,7 +38,16 @@ const toJSON = x => JSON.stringify(x);
 const toNumber = (x, base = 10) => base ? parseInt(x, base) : parseFloat(x);
 const toObjectCount = x => toCount(toObjectKeys(x));
 const toObjectEntries = x => Object.entries(x);
+const toObjectKey = (x, data) => {
+    for (let key in data) {
+        if (x === data[key]) {
+            return key;
+        }
+    }
+    return null;
+};
 const toObjectKeys = x => Object.keys(x);
+const toObjectValue = (x, data) => x in data ? data[x] : null;
 const toObjectValues = x => Object.values(x);
 const toRound = x => isNumber(x) ? Math.round(x) : null;
 const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
@@ -57,6 +74,8 @@ const toValue = x => {
 
 Object.assign(exports || {}, {
     toArray,
+    toArrayKey,
+    toArrayValue,
     toBoolean,
     toCaseCamel,
     toCaseKebab,
@@ -73,7 +92,9 @@ Object.assign(exports || {}, {
     toNumber,
     toObjectCount,
     toObjectEntries,
+    toObjectKey,
     toObjectKeys,
+    toObjectValue,
     toObjectValues,
     toRound,
     toString,
