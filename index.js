@@ -65,11 +65,16 @@ const toValue = x => {
         }
         return x;
     }
-    return ({
-        'false': false,
-        'null': null,
-        'true': true
-    })[x] || x;
+    if ('false' === x) {
+        return false;
+    }
+    if ('null' === x) {
+        return null;
+    }
+    if ('true' === x) {
+        return true;
+    }
+    return x;
 };
 
 Object.assign(exports || {}, {
