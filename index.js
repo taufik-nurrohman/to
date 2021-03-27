@@ -50,7 +50,7 @@ const toObjectKeys = x => Object.keys(x);
 const toObjectValue = (x, data) => x in data ? data[x] : null;
 const toObjectValues = x => Object.values(x);
 const toRound = x => isNumber(x) ? Math.round(x) : null;
-const toString = (x, base = 10) => isObject(x) && 'toString' in x ? x.toString(base) : "" + x;
+const toString = (x, base = 10) => isNumber(x) ? x.toString(base) : "" + x;
 const toURL = x => decodeURIComponent(x);
 const toValue = x => {
     if (isArray(x)) {
