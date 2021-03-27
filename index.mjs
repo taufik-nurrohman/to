@@ -51,7 +51,7 @@ export const toObjectKeys = x => Object.keys(x);
 export const toObjectValue = (x, data) => x in data ? data[x] : null;
 export const toObjectValues = x => Object.values(x);
 export const toRound = x => isNumber(x) ? Math.round(x) : null;
-export const toString = (x, base = 10) => x && 'toString' in x ? x.toString(base) : "" + x;
+export const toString = (x, base = 10) => isObject(x) && 'toString' in x ? x.toString(base) : "" + x;
 export const toURL = x => decodeURIComponent(x);
 export const toValue = x => {
     if (isArray(x)) {
