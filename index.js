@@ -77,7 +77,7 @@ const toValue = x => {
     return x;
 };
 
-Object.assign(exports || {}, {
+Object.assign(exports, {
     toArray,
     toArrayKey,
     toArrayValue,
