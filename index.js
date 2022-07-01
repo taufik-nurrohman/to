@@ -26,7 +26,7 @@ const toEdge = (x, edges) => {
     }
     return x;
 };
-const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
+const toFix = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 const toFloor = x => isNumber(x) ? Math.floor(x) : x;
 const toHTML = x => {
     return x
@@ -90,7 +90,7 @@ Object.assign(exports, {
     toCeil,
     toCount,
     toEdge,
-    toFixed,
+    toFix,
     toFloor,
     toHTML,
     toJSON,

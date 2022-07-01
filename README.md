@@ -46,7 +46,7 @@ Methods
 
 ### toEdge(number, [min, max])
 
-### toFixed(number)
+### toFix(number)
 
 ### toFloor(number)
 

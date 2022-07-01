@@ -26,7 +26,7 @@ export const toEdge = (x, edges) => {
     }
     return x;
 };
-export const toFixed = (x, base) => isNumber(x) ? x.toFixed(base) : null;
+export const toFix = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 export const toFloor = x => isNumber(x) ? Math.floor(x) : x;
 export const toHTML = x => {
     return x
