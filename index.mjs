@@ -28,11 +28,12 @@ export const toEdge = (x, edges) => {
 };
 export const toFix = (x, base) => isNumber(x) ? x.toFixed(base) : null;
 export const toFloor = x => isNumber(x) ? Math.floor(x) : x;
-export const toHTML = x => {
-    return x
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&amp;/g, '&');
+export const toHTML = (x, quote = true) => {
+    x = x.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    if (quote) {
+        x = x.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
+    }
+    return x;
 };
 export const toJSON = x => JSON.stringify(x);
 export const toNumber = (x, base = 10) => base ? parseInt(x, base) : parseFloat(x);

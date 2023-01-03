@@ -50,7 +50,7 @@ Methods
 
 ### toFloor(number)
 
-### toHTML(string)
+### toHTML(string, quote = true)
 
 ### toJSON(any)
 
