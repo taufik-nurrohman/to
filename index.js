@@ -52,7 +52,7 @@ const toObjectValue = (x, data) => x in data ? data[x] : null;
 const toObjectValues = x => Object.values(x);
 const toRound = x => isNumber(x) ? Math.round(x) : null;
 const toString = (x, base = 10) => isNumber(x) ? x.toString(base) : "" + x;
-const toURL = x => decodeURIComponent(x);
+const toURL = x => encodeURIComponent(x);
 const toValue = x => {
     if (isArray(x)) {
         return x.map(v => toValue(v));
