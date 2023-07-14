@@ -1,4 +1,5 @@
-import {isArray, isNumber, isNumeric, isObject, isSet, isString} from '@taufik-nurrohman/is';
+import {fromStates, fromValue} from '@taufik-nurrohman/from';
+import {isArray, isNumber, isNumeric, isObject, isSet} from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
 export const toArrayKey = (x, data) => {
@@ -27,10 +28,10 @@ export const toEdge = (x, edges) => {
     return x;
 };
 export const toFix = (x, base) => isNumber(x) ? x.toFixed(base) : null;
-export const toFloor = x => isNumber(x) ? Math.floor(x) : x;
-export const toHTML = (x, quote = true) => {
+export const toFloor = x => isNumber(x) ? Math.floor(x) : null;
+export const toHTML = (x, restoreQuote = true) => {
     x = x.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-    if (quote) {
+    if (restoreQuote) {
         x = x.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
     }
     return x;
@@ -51,6 +52,31 @@ export const toObjectKey = (x, data) => {
 export const toObjectKeys = x => Object.keys(x);
 export const toObjectValue = (x, data) => x in data ? data[x] : null;
 export const toObjectValues = x => Object.values(x);
+function _toQueryDeep(query, key) {
+    let out = {},
+        suffix = key ? '%5D' : "", i, k, v;
+    for (i in query) {
+        k = toURL(i);
+        v = query[i];
+        if (isObject(v)) {
+            out = fromStates({}, out, _toQueryDeep(v, key + k + suffix + '%5B'));
+        } else {
+            out[key + k + suffix] = v;
+        }
+    }
+    return out;
+}
+export const toQuery = x => {
+    let list = [],
+        query = _toQueryDeep(x, ""), k, v;
+    for (k in query) {
+        v = query[k];
+        // `{"a":"true","b":true}` â†’ `a=true&b`
+        v = true !== v ? '=' + toURL(fromValue(v)) : "";
+        list.push(k + v);
+    }
+    return toCount(list) ? '?' + list.join('&') : null;
+};
 export const toRound = x => isNumber(x) ? Math.round(x) : null;
 export const toString = (x, base = 10) => isNumber(x) ? x.toString(base) : "" + x;
 export const toURL = x => encodeURIComponent(x);

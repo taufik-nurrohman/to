@@ -50,7 +50,7 @@ Methods
 
 ### toFloor(number)
 
-### toHTML(string, quote = true)
+### toHTML(string, restoreQuote = true)
 
 ### toJSON(any)
 
@@ -67,6 +67,8 @@ Methods
 ### toObjectValue(key, object)
 
 ### toObjectValues(object)
+
+### toQuery(object)
 
 ### toRound(number)
 

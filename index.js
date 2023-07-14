@@ -1,3 +1,4 @@
+const {fromStates, fromValue} = require('@taufik-nurrohman/from');
 const {isArray, isNumber, isNumeric, isObject, isSet} = require('@taufik-nurrohman/is');
 
 const toArray = x => isArray(x) ? x : [x];
@@ -27,10 +28,10 @@ const toEdge = (x, edges) => {
     return x;
 };
 const toFix = (x, base) => isNumber(x) ? x.toFixed(base) : null;
-const toFloor = x => isNumber(x) ? Math.floor(x) : x;
-const toHTML = (x, quote = true) => {
+const toFloor = x => isNumber(x) ? Math.floor(x) : null;
+const toHTML = (x, restoreQuote = true) => {
     x = x.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-    if (quote) {
+    if (restoreQuote) {
         x = x.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
     }
     return x;
@@ -50,6 +51,31 @@ const toObjectKey = (x, data) => {
 const toObjectKeys = x => Object.keys(x);
 const toObjectValue = (x, data) => x in data ? data[x] : null;
 const toObjectValues = x => Object.values(x);
+function _toQueryDeep(query, key) {
+    let out = {},
+        suffix = key ? '%5D' : "", i, k, v;
+    for (i in query) {
+        k = toURL(i);
+        v = query[i];
+        if (isObject(v)) {
+            out = fromStates({}, out, _toQueryDeep(v, key + k + suffix + '%5B'));
+        } else {
+            out[key + k + suffix] = v;
+        }
+    }
+    return out;
+}
+const toQuery = x => {
+    let list = [],
+        query = _toQueryDeep(x, ""), k, v;
+    for (k in query) {
+        v = query[k];
+        // `{"a":"true","b":true}` â†’ `a=true&b`
+        v = true !== v ? '=' + toURL(fromValue(v)) : "";
+        list.push(k + v);
+    }
+    return toCount(list) ? '?' + list.join('&') : null;
+};
 const toRound = x => isNumber(x) ? Math.round(x) : null;
 const toString = (x, base = 10) => isNumber(x) ? x.toString(base) : "" + x;
 const toURL = x => encodeURIComponent(x);
@@ -102,6 +128,7 @@ Object.assign(exports, {
     toObjectKeys,
     toObjectValue,
     toObjectValues,
+    toQuery,
     toRound,
     toString,
     toURL,
