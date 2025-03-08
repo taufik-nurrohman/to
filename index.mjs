@@ -84,14 +84,17 @@ export const toValue = x => {
     if (isArray(x)) {
         return x.map(v => toValue(v));
     }
-    if (isNumeric(x)) {
-        return toNumber(x);
-    }
     if (isObject(x)) {
         for (let k in x) {
             x[k] = toValue(x[k]);
         }
         return x;
+    }
+    if (isString(x) && isNumeric(x)) {
+        if ('0' === x[0] && -1 === x.indexOf('.')) {
+            return x;
+        }
+        return toNumber(x);
     }
     if ('false' === x) {
         return false;
