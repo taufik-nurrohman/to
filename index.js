@@ -1,5 +1,5 @@
 const {fromStates, fromValue} = require('@taufik-nurrohman/from');
-const {isArray, isNumber, isNumeric, isObject, isSet} = require('@taufik-nurrohman/is');
+const {isArray, isNumber, isNumeric, isObject, isSet, isString} = require('@taufik-nurrohman/is');
 
 const toArray = x => isArray(x) ? x : [x];
 const toArrayKey = (x, data) => {

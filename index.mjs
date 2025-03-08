@@ -1,5 +1,5 @@
 import {fromStates, fromValue} from '@taufik-nurrohman/from';
-import {isArray, isNumber, isNumeric, isObject, isSet} from '@taufik-nurrohman/is';
+import {isArray, isNumber, isNumeric, isObject, isSet, isString} from '@taufik-nurrohman/is';
 
 export const toArray = x => isArray(x) ? x : [x];
 export const toArrayKey = (x, data) => {
