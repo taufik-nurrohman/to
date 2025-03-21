@@ -54,7 +54,11 @@ Methods
 
 ### toJSON(any)
 
+### toMapCount(map)
+
 ### toNumber(string, base = 10)
+
+### toObject(object)
 
 ### toObjectCount(object)
 
@@ -71,6 +75,8 @@ Methods
 ### toQuery(object)
 
 ### toRound(number)
+
+### toSetCount(set)
 
 ### toString(any)
 

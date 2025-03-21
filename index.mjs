@@ -37,9 +37,10 @@ export const toHTML = (x, restoreQuote = true) => {
     return x;
 };
 export const toJSON = x => JSON.stringify(x);
+export const toMapCount = x => x.size;
 export const toNumber = (x, base = 10) => base ? parseInt(x, base) : parseFloat(x);
-export const toObjectCount = x => toCount(toObjectKeys(x));
 export const toObject = x => Object.create(x);
+export const toObjectCount = x => toCount(toObjectKeys(x));
 export const toObjectEntries = x => Object.entries(x);
 export const toObjectKey = (x, data) => {
     for (let key in data) {
@@ -78,6 +79,7 @@ export const toQuery = x => {
     return toCount(list) ? '?' + list.join('&') : null;
 };
 export const toRound = x => isNumber(x) ? Math.round(x) : null;
+export const toSetCount = x => x.size;
 export const toString = (x, base = 10) => isNumber(x) ? x.toString(base) : "" + x;
 export const toURL = x => encodeURIComponent(x);
 export const toValue = x => {
